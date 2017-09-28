@@ -39,9 +39,33 @@ Return
 ;-----------
 MyHelp: 
 	message = 
+	message = %message%`n Ctrl/Win + NumPadUp:`tTop Half
+	message = %message%`n Ctrl/Win + NumPadDown:`tBottom Half
+	message = %message%`n
+	message = %message%`n Ctrl/Win + NumPad5:`tSwitch (for quick fill)
+
 	MsgBox, , Tall Windows by LevenTech, %message%
 Return
 
+
+NumPad0::
+	TrayTip "0" Pressed, "0" Pressed. Turn off NumLock to Maximize Windows, , 16
+Return
+
+NumPad2::
+	TrayTip "2" Pressed, "2" Pressed. Turn off NumLock to use Bottom Half, , 16
+Return
+
+NumPad8::
+	TrayTip "8" Pressed, "8" Pressed. Turn off NumLock to use Top Half, , 16
+Return
+
+
+; MAXIMIZE
+NumPadIns::
+	WinGetTitle, Title, A
+	WinMaximize, %Title%
+Return
 	
 ^NumPadUp::
 #NumPadUp::
