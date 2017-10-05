@@ -15,7 +15,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; TRAY ICON CONFIGURATION
 ;-------------------------
 	Menu, Tray, Tip,Tall Windows by LevenTech
-	Menu, Tray, Icon, Tall` Windows.ico, 1, 0
+	Menu, Tray, Icon, %A_ScriptDir%\Icons\Tall` Windows.ico, 1, 0
 	 
 	Menu, Tray, NoStandard
 	Menu, Tray, Add, Instructions, MyHelp
