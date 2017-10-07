@@ -81,12 +81,19 @@ Return
 NumPadDiv::
 	if (GetKeyState("NumLock", "T"))
 	{
-		WinGetTitle, Title, A
-		WinMaximize, %Title%		
+		Send, /
+		TrayTip "/" Pressed, Turn off NumLock to Maximize Windows, , 16
 	} else
 	{
-		Send, NumPadDiv
-		TrayTip "/" Pressed, Turn off NumLock to Maximize Windows, , 16
+		WinGetTitle, Title, A
+		WinGetPos, X, Y, Width, Height, %Title%
+		if (Width>3400 AND Height>1400)
+		{
+			WinRestore, %Title%
+		} else
+		{
+			WinMaximize, %Title%
+		}
 	}
 Return
 
