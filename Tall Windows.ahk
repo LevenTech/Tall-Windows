@@ -48,25 +48,65 @@ MyHelp:
 Return
 
 
-NumPad0::
-	TrayTip "0" Pressed, "0" Pressed. Turn off NumLock to Maximize Windows, , 16
+
+#IfWinActive ahk_class WorkerW
+; Next Desktop Background
+;---------------------------------
+NumPadDel::
+	Send, {AppsKey}
+	Sleep 100
+	Send, n
 Return
 
-NumPad2::
-	TrayTip "2" Pressed, "2" Pressed. Turn off NumLock to use Bottom Half, , 16
+NumPadDot::
+	if (GetKeyState("NumLock", "T"))
+	{
+		MsgBox, 4, ,NumLock is ON. Turn it OFF and RETRY?, 3
+		IfMsgBox, No
+			Return
+		IfMsgBox, Timeout
+			Return
+		SetNumLockState , Off
+		Send, #d
+		Sleep 100
+		Send, {AppsKey}
+		Sleep 100
+		Send, n
+	}
 Return
 
-NumPad8::
-	TrayTip "8" Pressed, "8" Pressed. Turn off NumLock to use Top Half, , 16
+#IfWinActive
+
+
+NumPadDiv::
+	if (GetKeyState("NumLock", "T"))
+	{
+		WinGetTitle, Title, A
+		WinMaximize, %Title%		
+	} else
+	{
+		Send, NumPadDiv
+		TrayTip "/" Pressed, Turn off NumLock to Maximize Windows, , 16
+	}
+Return
+
+^NumPad2::
+#NumPad2::
+	TrayTip "2" Pressed, Turn off NumLock to use Bottom Half, , 16
+Return
+
+NumPad5::
+	Send, 5
+	TrayTip "5" Pressed, Turn off NumLock for Task View, , 16
+Return
+
+#NumPad8::
+^NumPad8::
+	Send, 8
+	TrayTip "8" Pressed, Turn off NumLock to use Top Half, , 16
 Return
 
 
-; MAXIMIZE
-NumPadIns::
-	WinGetTitle, Title, A
-	WinMaximize, %Title%
-Return
-	
 ^NumPadUp::
 #NumPadUp::
     WinGetTitle, windowName, A
