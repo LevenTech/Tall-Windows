@@ -87,7 +87,7 @@ NumPadDiv::
 	{
 		WinGetTitle, Title, A
 		WinGetPos, X, Y, Width, Height, %Title%
-		if (Width>3400 AND Height>1400)
+		if (Width>900 AND Height>1500)
 		{
 			WinRestore, %Title%
 		} else
