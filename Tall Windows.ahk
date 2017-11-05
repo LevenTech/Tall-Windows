@@ -18,10 +18,15 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 	Menu, Tray, Icon, %A_ScriptDir%\Icons\Tall` Windows.ico, 1, 0
 	 
 	Menu, Tray, NoStandard
+
 	Menu, Tray, Add, Instructions, MyHelp
 	Menu, Tray, Default, Instructions 
-	Menu, Tray, Standard
-
+	Menu, Tray, Add, Edit Script, EditScript
+	Menu, Tray, Add
+	
+	#Include %A_ScriptDir%\..\SeeThroughOrNot\
+	#Include SeeThroughOrNot_addon.ahk
+	
 ; SCREEN PIXEL CONFIGURATION
 ;----------------------------
 	Left := -10
@@ -32,7 +37,18 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 	Middle := 930
 	BottomHalfHeight := 940
+
+	
 Return
+;--------------------------------------------------------------------------
+;-----------------     END OF INITIAL RUN       ---------------------------
+;--------------------------------------------------------------------------
+
+
+EditScript: 
+	Run, notepad++.exe "%A_ScriptDir%\Tall` Windows.ahk"
+Return
+
 
 
 ; HELP TEXT
