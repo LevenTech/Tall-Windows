@@ -24,8 +24,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 	Menu, Tray, Add, Edit Script, EditScript
 	Menu, Tray, Add
 	
-	#Include %A_ScriptDir%\..\SeeThroughOrNot\
-	#Include SeeThroughOrNot_addon.ahk
 	
 ; SCREEN PIXEL CONFIGURATION
 ;----------------------------
@@ -38,6 +36,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 	Middle := 930
 	BottomHalfHeight := 940
 
+#Include %A_ScriptDir%\..\SeeThroughOrNot\
+#Include SeeThroughOrNot_addon.ahk
 	
 Return
 ;--------------------------------------------------------------------------
